@@ -1,5 +1,7 @@
 
+import 'package:first_app/models/first_form_models.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'Pages/fifth_page.dart';
 import 'Pages/first_page.dart';
 import 'Pages/fourth_page.dart';
@@ -7,11 +9,20 @@ import 'Pages/second_page.dart';
 import 'Pages/sixth_page.dart';
 import 'Pages/third_page.dart';
 import 'Pages/Seventh_page.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(
+   MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (context) => FirstFormModel(),
+        ),
+      ],
+      child: MyApp(),
+    ),
+  );
 }
-
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
