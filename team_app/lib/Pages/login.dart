@@ -1,4 +1,6 @@
+
 import 'package:flutter/material.dart';
+import 'package:team_app/data/employee.dart';
 import 'package:team_app/widgets/login_form.dart';
 import 'package:team_app/widgets/primary_button.dart';
 import 'bottom_nav_screen.dart';
@@ -8,7 +10,17 @@ import 'signup.dart';
 class LogInScreen extends StatelessWidget {
   TextEditingController Email = TextEditingController();
   TextEditingController Password = TextEditingController();
+  Employee emp = Employee();
   late int num = 0;
+
+  gotoHomePage(context) {
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(
+        builder: (context) => BottomNavScreen(),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,10 +55,10 @@ class LogInScreen extends StatelessWidget {
                         height: 100,
                       ),
                       Text(
-                        "Welcome Back",
+                        "ยินดีต้อนรับ",
                         style: TextStyle(
                           color: Colors.white,
-                          fontSize: 40,
+                          fontSize: 36,
                           fontWeight: FontWeight.w800,
                         ),
                       ),
@@ -55,15 +67,6 @@ class LogInScreen extends StatelessWidget {
                       ),
                       Row(
                         children: [
-                          Text(
-                            "New to this app?",
-                            style: TextStyle(
-                              fontSize: 16,
-                            ),
-                          ),
-                          SizedBox(
-                            width: 5,
-                          ),
                           GestureDetector(
                             onTap: () {
                               Navigator.push(
@@ -74,8 +77,9 @@ class LogInScreen extends StatelessWidget {
                               );
                             },
                             child: Text(
-                              "Sign Up",
+                              "ผู้ใช้งานใหม่? กดลงทะเบียนตรงนี้",
                               style: TextStyle(
+                                color: Colors.amber[300],
                                 fontSize: 20,
                                 fontWeight: FontWeight.w700,
                               ),
@@ -119,9 +123,9 @@ class LogInScreen extends StatelessWidget {
                               );
                             },
                             child: Text(
-                              'Forgot password?',
+                              'ลืมรหัสผ่าน?',
                               style: TextStyle(
-                                color: Colors.blue.shade600,
+                                color: Colors.blue,
                                 fontSize: 14,
                                 decoration: TextDecoration.underline,
                                 decorationThickness: 1,
@@ -136,12 +140,44 @@ class LogInScreen extends StatelessWidget {
                               if ((Email.text == "chavisa@gmail.com") &&
                                   (Password.text == "1234")) {
                                 print(Email.text + " pass " + Password.text);
-                                Navigator.pushReplacement(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => BottomNavScreen(),
-                                  ),
-                                );
+                                emp.setUser(Email.text, "chavisa@gmail.com");
+                                gotoHomePage(context);
+                              }
+                              if ((Email.text == "ronachai@gmail.com") &&
+                                  (Password.text == "1234")) {
+                                print(Email.text + " pass " + Password.text);
+                                emp.setUser(Email.text, "ronachai@gmail.com");
+                                gotoHomePage(context);
+                              }
+                              if ((Email.text == "panita@gmail.com") &&
+                                  (Password.text == "1234")) {
+                                print(Email.text + " pass " + Password.text);
+                                emp.setUser(Email.text, "panita@gmail.com");
+                                gotoHomePage(context);
+                              }
+                              if ((Email.text == "wipawan@gmail.com") &&
+                                  (Password.text == "1234")) {
+                                print(Email.text + " pass " + Password.text);
+                                emp.setUser(Email.text, "wipawan@gmail.com");
+                                gotoHomePage(context);
+                              }
+                              if ((Email.text == "orapan@gmail.com") &&
+                                  (Password.text == "1234")) {
+                                print(Email.text + " pass " + Password.text);
+                                emp.setUser(Email.text, "orapan@gmail.com");
+                                gotoHomePage(context);
+                              }
+                              if ((Email.text == "ganokporn@gmail.com") &&
+                                  (Password.text == "1234")) {
+                                print(Email.text + " pass " + Password.text);
+                                emp.setUser(Email.text, "ganokporn@gmail.com");
+                                gotoHomePage(context);
+                              }
+                              if ((Email.text == "test") &&
+                                  (Password.text == "123")) {
+                                //saveLogin(Email.text, "Test");
+                                emp.setUser(Email.text, "test");
+                                gotoHomePage(context);
                               } else {
                                 print("error");
                                 num = num + 1;
@@ -156,24 +192,11 @@ class LogInScreen extends StatelessWidget {
                                 }
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   const SnackBar(
-                                      content: Text(
-                                          'Email or Password is not correct')),
+                                      content: Text('เข้าสู่ระบบสำเร็จเเล้ว')),
                                 );
-                                /*
-                                showDialog(
-                                  context: context,
-                                  builder: (BuildContext context) =>
-                                      AlertDialog(
-                                    title: Text('No Data Email And Password'),
-                                  ),
-                                );
-    
-                                print(
-                                    Email.text + "  no data  " + Password.text);
-                                */
                               }
                             },
-                            child: PrimaryButton(buttonText: 'Login'),
+                            child: PrimaryButton(buttonText: 'เข้าสู่ระบบ'),
                           ),
                           SizedBox(
                             height: 20,
@@ -182,20 +205,6 @@ class LogInScreen extends StatelessWidget {
                       ),
                     ),
                   ))
-
-              /*
-              Text(
-                "Or log in with",
-                style: TextStyle(
-                  fontSize: 16,
-                  color: Colors.black,
-                ),
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              LoginOption(),
-              */
             ],
           ),
         ),

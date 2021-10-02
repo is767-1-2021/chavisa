@@ -21,13 +21,13 @@ class ResetPasswordScreen extends StatelessWidget {
                 height: 50,
               ),
               Text(
-                "Reset Password",
+                "ตั้งค่ารหัสผ่านใหม่",
                 style: TextStyle(fontSize: 24, fontWeight: FontWeight.w800),
               ),
               SizedBox(
                 height: 5,
               ),
-              Text("Please enter your email address"),
+              Text("Reset password"),
               ResetForm(),
               SizedBox(
                 height: 40,
@@ -39,7 +39,7 @@ class ResetPasswordScreen extends StatelessWidget {
                     MaterialPageRoute(builder: (context) => LogInScreen()),
                   );
                 },
-                child: PrimaryButton(buttonText: "Reset Password"),
+                child: PrimaryButton(buttonText: "ยืนยัน"),
               ),
             ],
           ),

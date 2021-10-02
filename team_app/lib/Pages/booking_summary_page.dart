@@ -161,21 +161,5 @@ class _BookingSummaryState extends State<BookingSummaryScreen> {
         ),
       ),
     );
-    // return ListView.builder(
-    //   itemCount: data_info.length,
-    //   itemBuilder: (context,pos){
-    //     return Padding(
-    //       padding: EdgeInsets.only(bottom: 16.0),
-    //       child: Card(
-    //         color: iWhiteColor,
-    //         child: Padding(
-    //           padding: EdgeInsets.symmetric(vertical: 24.0),
-    //           child: Text(data_info[pos].title),
-    //         ),
-    //       ),
-    //     );
-    //   },
-    // );
-
   }
 }

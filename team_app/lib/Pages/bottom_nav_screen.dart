@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
-
 import 'dash_board_page.dart';
 import 'home_page.dart';
 
 class BottomNavScreen extends StatefulWidget {
-  const BottomNavScreen({Key? key}) : super(key: key);
-
   @override
   _BottomNavScreenState createState() => _BottomNavScreenState();
 }

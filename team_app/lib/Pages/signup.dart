@@ -26,11 +26,11 @@ class SignUpScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(
-                height: 50,
+                height: 20,
               ),
               Text(
-                "Create Account",
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.w800),
+                "ลงทะเบียนผู้ใช้งาน",
+                style: TextStyle(fontSize: 32, fontWeight: FontWeight.w800),
               ),
               SizedBox(
                 height: 5,
@@ -38,35 +38,36 @@ class SignUpScreen extends StatelessWidget {
               Row(
                 children: [
                   Text(
-                    'Already a member?',
-                  )
+                    '',
+                    style: TextStyle(fontSize: 20),
+              ),
                 ],
               ),
               SizedBox(
-                height: 10,
+                height: 20,
               ),
               SignUpForm(_formKey, firstName, lastName, email, cid, phon,
                   password, _Confirpassword),
               SizedBox(
                 height: 20,
               ),
-              CheckBox('Agree to terms and conditions.'),
+              CheckBox('ผู้ใช้ยินยอมให้เก็บข้อมูล'),
               SizedBox(
-                height: 20,
+                height: 15,
               ),
-              CheckBox('I have at least 18 years old.'),
+              CheckBox('ผู้ใช้งานมีอายุตั้งเเต่ 18 ปีขึ้นไป'),
               SizedBox(
-                height: 20,
+                height: 15,
               ),
               GestureDetector(
                 onTap: () {
                   CheckValueSignUp(
                       _formKey, context, password, _Confirpassword);
                 },
-                child: PrimaryButton(buttonText: 'Sign Up'),
+                child: PrimaryButton(buttonText: 'ยืนยันการลงทะเบียน'),
               ),
               SizedBox(
-                height: 50,
+                height: 30,
               )
             ],
           ),
@@ -81,7 +82,7 @@ void CheckValueSignUp(_formKey, context, TextEditingController password,
   if (_formKey.currentState!.validate()) {
     if (_Confirpassword.text == password.text) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Success')),
+        const SnackBar(content: Text('ลงทะเบียนเรียบร้อยเเล้ว ให้ log in อีกครั้งเพื่อเข้าใช้งาน')),
       );
       Navigator.push(
         context,
@@ -89,7 +90,7 @@ void CheckValueSignUp(_formKey, context, TextEditingController password,
       );
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('passwork is problem')),
+        const SnackBar(content: Text('Email หรือ รหัสผ่านไม่ถูกต้อง')),
       );
     }
   }

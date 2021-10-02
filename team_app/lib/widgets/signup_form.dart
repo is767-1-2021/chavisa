@@ -27,13 +27,13 @@ class _SignUpFormState extends State<SignUpForm> {
       key: widget._formKey,
       child: Column(
         children: [
-          buildInputForm('First Name', false, widget.firstName, "text"),
-          buildInputForm('Last Name', false, widget.lastName, "text"),
+          buildInputForm('ชื่อ', false, widget.firstName, "text"),
+          buildInputForm('นามสกุล', false, widget.lastName, "text"),
           buildInputForm('Email', false, widget.email, "email"),
-          buildInputForm('ID Card Code', false, widget.cid, "number"),
-          buildInputForm('Phone', false, widget.phon, "number"),
-          buildInputForm('Password', true, widget.password, "text"),
-          buildInputForm('Confirm Password', true, widget._Cpassword, "text"),
+          buildInputForm('เลขรหัสประจำตัวประชาชน', false, widget.cid, "number"),
+          buildInputForm('เบอร์โทรศัพท์', false, widget.phon, "number"),
+          buildInputForm('รหัสผ่าน', true, widget.password, "text"),
+          buildInputForm('ยืนยันรหัสผ่าน', true, widget._Cpassword, "text"),
         ],
       ),
     );
@@ -55,6 +55,7 @@ class _SignUpFormState extends State<SignUpForm> {
         hintText: hint,
         hintStyle: TextStyle(
           color: Colors.grey,
+          fontSize: 14,
         ),
         suffix: pass
             ? IconButton(
@@ -71,12 +72,12 @@ class _SignUpFormState extends State<SignUpForm> {
       validator: (value) {
         if (_typeInput == "text" || _typeInput == "number") {
           if (value == null || value.isEmpty) {
-            return 'Please enter some text';
+            return 'โปรดกรอกข้อมูลให้ครบถ้วน';
           }
           return null;
         } else if (_typeInput == "email") {
           if (!((value!.contains('@')) && (value.contains('.')))) {
-            return 'Pleass Type Email in Email Format Exp. you@email.com';
+            return 'ตัวอย่าง you@email.com';
           }
           return null;
         }
