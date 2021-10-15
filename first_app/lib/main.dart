@@ -1,4 +1,5 @@
 
+import 'package:first_app/Pages/eighth_page.dart';
 import 'package:first_app/models/first_form_models.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -10,6 +11,7 @@ import 'Pages/sixth_page.dart';
 import 'Pages/third_page.dart';
 import 'Pages/Seventh_page.dart';
 import 'package:provider/provider.dart';
+import 'models/first_form_models.dart';
 
 void main() {
   runApp(
@@ -44,6 +46,7 @@ class MyApp extends StatelessWidget {
           '/5': (context) => FifthPage(),
           '/6': (context) => SixthPage(),
           '/7': (context) => SeventhPage(),
+          '/8': (context) => EighthPage(),
         }
         );
   }
