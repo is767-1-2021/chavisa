@@ -1,18 +1,17 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:team_app/Pages/booking_step1_page.dart';
 import 'package:team_app/Pages/login_page.dart';
-import 'package:team_app/constants/color_constant.dart';
+import 'package:team_app/Pages/qr_scan_page.dart';
 import 'package:team_app/data/data.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+class HospitalHomeBodyScreen extends StatefulWidget {
+  const HospitalHomeBodyScreen({Key? key}) : super(key: key);
 
   @override
-  _HomeScreenState createState() => _HomeScreenState();
+  _HospitalHomeBodyScreenState createState() => _HospitalHomeBodyScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HospitalHomeBodyScreenState extends State<HospitalHomeBodyScreen> {
   @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
@@ -43,8 +42,7 @@ class _HomeScreenState extends State<HomeScreen> {
         slivers: [
           _headerSection(screenHeight),
           _preventionTipsSection(screenHeight),
-          //_BookingSection(screenHeight),
-          _Menu(screenHeight)
+          _BookingSection(screenHeight)
         ],
       ),
     );
@@ -66,12 +64,12 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: screenHeight * 0.01),
+            SizedBox(height: screenHeight * 0.03),
             Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text(
-                  'คุณรู้สึกป่วยหรือไม่?',
+                  'ยินดีต้อนรับ',
                   style: TextStyle(
                       color: Colors.white,
                       fontSize: 22.0,
@@ -84,12 +82,12 @@ class _HomeScreenState extends State<HomeScreen> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text(
-                  'หากคุณมีอาการเกี่ยวกับ Covid-19 เราแนะนำให้คุณเข้ารับการตรวจ เพื่อคนที่คุณรัก',
+                  'เจ้าหน้าที่โรงพยาบาล',
                   style: TextStyle(color: Colors.white70, fontSize: 15.0),
                 ),
               ],
             ),
-            SizedBox(height: screenHeight * 0.01),
+            SizedBox(height: screenHeight * 0.03),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -102,18 +100,18 @@ class _HomeScreenState extends State<HomeScreen> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => BookingStep1Screen()));
+                            builder: (context) => ScanQR_Page()));
                   },
                   color: Colors.green,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30.0),
                   ),
                   icon: Icon(
-                    Icons.event_note,
+                    Icons.qr_code_scanner,
                     color: Colors.white,
                   ),
                   label: Text(
-                    'จองคิว',
+                    'สแกนด่วน',
                     style: TextStyle(
                       fontSize: 16.0,
                       fontWeight: FontWeight.w600,
@@ -151,9 +149,9 @@ class _HomeScreenState extends State<HomeScreen> {
                         children: [
                           Image.asset(
                             e.keys.first,
-                            height: screenHeight * 0.07,
+                            height: screenHeight * 0.12,
                           ),
-                          SizedBox(height: screenHeight * 0.005),
+                          SizedBox(height: screenHeight * 0.015),
                           Text(
                             e.values.first,
                             style: TextStyle(
@@ -190,7 +188,7 @@ class _HomeScreenState extends State<HomeScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'จองคิวเลย !',
+                  'เพราะคุณคือคนสำคัญ',
                   style: TextStyle(
                       color: Colors.white,
                       fontSize: 18.0,
@@ -198,7 +196,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 SizedBox(height: screenHeight * 0.01),
                 Text(
-                  'นัดหมายตรวจ Covid-19\nล่วงหน้ากับ i-Covid.',
+                  'พวกเราจะผ่านเหตุการณ์นี้ไปด้วยกัน',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 16.0,
@@ -211,49 +209,5 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
     );
-  }
-
-  SliverToBoxAdapter _Menu(double screenHeight) {
-    final List<Icon> _iconList = <Icon>
-    [
-      Icon(Icons.app_registration,color: Colors.white,size: 30,),Icon(Icons.login,color: Colors.white,size: 30,),
-      Icon(Icons.event_note,color: Colors.white,size: 30,),Icon(Icons.local_hospital,color: Colors.white,size: 30,),
-      Icon(Icons.local_hospital_rounded,color: Colors.white,size: 30,),Icon(Icons.admin_panel_settings,color: Colors.white,size: 30,),
-    ];
-    return SliverToBoxAdapter(
-      child: Container(
-        height: screenHeight *0.35,
-        child: GridView.count(
-          crossAxisCount: 3,
-          children: List.generate(6, (index) {
-            return InkWell(
-              onTap: () {
-                Navigator.pushNamed(context, '/${index + 1}');
-              },
-              child: Container(
-                margin: EdgeInsets.all(8.0),
-                decoration: BoxDecoration(
-                  color: iBlueColor,
-                  borderRadius: BorderRadius.circular(15.0),
-                ),
-                child: Center(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      _iconList[index],
-                      Text(
-                        index+1 == 1 ? 'ลงทะเบียน': index+1 == 2 ? 'เข้าสู่ระบบ':index+1 == 3 ?'จองคิว':index+1 == 4 ?'รพ.':index+1 == 5 ?'รพ.สนาม':'ผู้ดูแลระบบ',
-                        style: TextStyle(color: Colors.white, fontSize: 18),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            );
-          }
-        ),
-    ),
-      ));
   }
 }

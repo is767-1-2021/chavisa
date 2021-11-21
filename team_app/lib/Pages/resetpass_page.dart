@@ -1,16 +1,20 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:team_app/constants/color_constant.dart';
 import 'package:team_app/widgets/primary_button.dart';
-import 'package:team_app/widgets/reset_form.dart';
-import 'login.dart';
+import 'login_page.dart';
 
+TextEditingController Email = TextEditingController();
 
 class ResetPasswordScreen extends StatelessWidget {
-  const ResetPasswordScreen({Key? key}) : super(key: key);
+  //const ResetPasswordScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        backgroundColor: iBlueColor,
+      ),
       body: Padding(
         padding: const EdgeInsets.only(left: 30, right: 30),
         child: SingleChildScrollView(
@@ -21,25 +25,55 @@ class ResetPasswordScreen extends StatelessWidget {
                 height: 50,
               ),
               Text(
-                "Reset Password",
+                "ตั้งค่ารหัสผ่านใหม่",
                 style: TextStyle(fontSize: 24, fontWeight: FontWeight.w800),
               ),
               SizedBox(
                 height: 5,
               ),
-              Text("Please enter your email address"),
-              ResetForm(),
+              Text("กรุณาระบุอีเมล์"),
+              Padding(
+                padding: const EdgeInsets.only(top: 20),
+                child: TextFormField(
+                  controller: Email,
+                  decoration: InputDecoration(
+                    hintText: 'Email',
+                    hintStyle: TextStyle(color: Colors.grey),
+                  ),
+                ),
+              ),
               SizedBox(
                 height: 40,
               ),
               GestureDetector(
-                onTap: () {
+                onTap: () async {
+                  try {
+                    var FirebaseAuth;
+                    await FirebaseAuth.instance
+                        .sendPasswordResetEmail(email: Email.text);
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                          content: Text('กรุณาไปตรวจสอบ ที่ Email ขอบคุณ')),
+                    );
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => LogInScreen()),
+                    );
+                  } on FirebaseAuthException catch (e) {
+                    print("error" + e.toString());
+                  }
+
+                  /*
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => LogInScreen()),
                   );
+                  */
                 },
-                child: PrimaryButton(buttonText: "Reset Password"),
+                child: PrimaryButton(
+                  buttonText: "ตกลง",
+                  buttonColor: iBlueColor,
+                ),
               ),
             ],
           ),

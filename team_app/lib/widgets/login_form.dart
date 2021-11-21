@@ -17,8 +17,8 @@ class _LogInFormState extends State<LogInForm> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        buildInputForm('Email', false, widget.email),
-        buildInputForm('Password', true, widget.password)
+        buildInputForm('อีเมล์', false, widget.email),
+        buildInputForm('รหัสผ่าน', true, widget.password)
       ],
     );
   }
@@ -29,7 +29,7 @@ class _LogInFormState extends State<LogInForm> {
       padding: const EdgeInsets.symmetric(vertical: 5),
       child: TextFormField(
         controller: controllerName,
-        keyboardType: pass ? null :TextInputType.emailAddress,
+        keyboardType: pass ? null : TextInputType.emailAddress,
         obscureText: pass ? _isObscure : false,
         decoration: InputDecoration(
           labelText: label,

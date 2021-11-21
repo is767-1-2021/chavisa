@@ -27,11 +27,11 @@ class _SignUpFormState extends State<SignUpForm> {
       key: widget._formKey,
       child: Column(
         children: [
+          buildInputForm('เลขรหัสประจำตัวประชาชน', false, widget.cid, "number"),
           buildInputForm('ชื่อ', false, widget.firstName, "text"),
           buildInputForm('นามสกุล', false, widget.lastName, "text"),
-          buildInputForm('Email', false, widget.email, "email"),
-          buildInputForm('เลขรหัสประจำตัวประชาชน', false, widget.cid, "number"),
           buildInputForm('เบอร์โทรศัพท์', false, widget.phon, "number"),
+          buildInputForm('อีเมล์', false, widget.email, "email"),
           buildInputForm('รหัสผ่าน', true, widget.password, "text"),
           buildInputForm('ยืนยันรหัสผ่าน', true, widget._Cpassword, "text"),
         ],
@@ -43,9 +43,7 @@ class _SignUpFormState extends State<SignUpForm> {
       String _typeInput) {
     return TextFormField(
       controller: controllerName,
-      keyboardType:
-          _typeInput == "number" ? TextInputType.number : TextInputType.text,
-      inputFormatters: _typeInput == "number"
+      keyboardType:_typeInput == "number" ? TextInputType.number : TextInputType.text,inputFormatters: _typeInput == "number"
           ? <TextInputFormatter>[
               FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
             ]

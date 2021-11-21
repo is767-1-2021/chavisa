@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ResetForm extends StatelessWidget {
-  const ResetForm({Key? key}) : super(key: key);
+  late final TextEditingController email;
 
   @override
   Widget build(BuildContext context) {
