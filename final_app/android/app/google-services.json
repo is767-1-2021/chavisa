@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "142036965191",
+    "project_id": "is767-2021-chavisa",
+    "storage_bucket": "is767-2021-chavisa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:142036965191:android:0146ccb0db7410b3091e62",
+        "android_client_info": {
+          "package_name": "com.example.final_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "142036965191-kjpagl3h4tha64dp2383itja71vu3tdf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAW9gYIFVqJJJ4zbEUztfxhECFE_9aKnhM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "142036965191-kjpagl3h4tha64dp2383itja71vu3tdf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
